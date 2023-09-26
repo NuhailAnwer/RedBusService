@@ -13,8 +13,7 @@ namespace RedBusService.Responses
         public DateTime TimeOfArrival { get; set; }
         public string MaintainenceStates { get; set; }
 
-        public BusDriver driver { get; set; }
-
+        
 
     }
 }

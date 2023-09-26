@@ -22,6 +22,7 @@ namespace RedBusService.Controllers
         {
             var DriverGet = BusServicedbContext.Drivers.Select(mn => new DriverResponse
             {
+                Id=mn.Id,
                 DriverName = mn.DriverName,
                 DriverLicense = mn.DriverLicense,
                 DateOfExpiry = mn.DateOfExpiry,
@@ -35,7 +36,7 @@ namespace RedBusService.Controllers
 
         }
         [HttpGet("{id}")]
-        public ActionResult<DriverResponse> Get(int id)
+        public ActionResult<DriverResponse> GetSpecific(int id)
         {
             var DriverGet= BusServicedbContext.Drivers
             .Select(mn => new DriverResponse
@@ -75,7 +76,7 @@ namespace RedBusService.Controllers
 
             return true;
         }
-        [HttpPut("{id")]
+        [HttpPut("{id}")]
         public ActionResult<bool> Put(int id,DriverRequest request)
         {
             var Update = BusServicedbContext.Drivers.FirstOrDefault(i => i.Id == id);
@@ -109,5 +110,7 @@ namespace RedBusService.Controllers
 
             return Ok(true);
         }
+        
+
     }
 }

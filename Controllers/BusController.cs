@@ -31,7 +31,7 @@ namespace RedBusService.Controllers
                 fuelLevel = bus.fuelLevel.ToString(),
                 TimeOfArrival = bus.TimeOfArrival,
                 MaintainenceStates = bus.MaintainenceStates.ToString(),
-                driver = 
+               
 
             }).ToList() ;
             
@@ -41,7 +41,7 @@ namespace RedBusService.Controllers
         [HttpPost]
         public bool Post(BusRequest request)
         {
-            var busPost = new BusRequest
+            var busPost = new Bus
             {
                 Capacity = request.Capacity,
                 Condition = request.Condition,
@@ -51,7 +51,7 @@ namespace RedBusService.Controllers
                 TimeOfArrival=request.TimeOfArrival
             
             };
-            BusServicedbContext.Add(busPost);
+            BusServicedbContext.Buses.Add(busPost);
             BusServicedbContext.SaveChanges();
 
             return true;
@@ -90,9 +90,9 @@ namespace RedBusService.Controllers
 
 
             return Ok(true);
-        }
+        }/*
         [HttpGet("BusesWithoutDrivers")]
-        public ActionResult<BusResponse> Get()
+        public ActionResult<BusResponse> GetBus()
         {
             var bus = BusServicedbContext.BusDrivers.Select(bus => new BusResponse
             {
@@ -103,15 +103,15 @@ namespace RedBusService.Controllers
                 fuelLevel = bus.bus.fuelLevel.ToString(),
                 TimeOfArrival = bus.bus.TimeOfArrival,
                 MaintainenceStates = bus.bus.MaintainenceStates.ToString(),
-                driver = bus.Select(new DriverResponse
-                {
-
-                }
+                
 
             }).ToList();
             return Ok(bus);
 
-        }
+        }*/
+
+
+
 
     }
 }
